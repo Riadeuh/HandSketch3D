@@ -21,20 +21,18 @@ class GestureDatasetCapture:
         self.record_duration = 2.0  # secondes
         self.frames_per_gesture = int(self.fps * self.record_duration)
 
-        # Liste des gestes à enregistrer
         self.gestures = [
             "idle",          # Main au repos
-            "rotate_cw",     # Rotation horaire
-            "rotate_ccw",    # Rotation anti-horaire
-            "zoom_in",       # Pincement qui s'écarte
-            "zoom_out",      # Main qui se referme
-            "swipe_left",    # Balayage gauche
-            "swipe_right",   # Balayage droite
-            "push",          # Mouvement vers l'avant
-            "pull",          # Mouvement vers soi
-            "grab",          # Main ouverte → fermée
-            "release"        # Main fermée → ouverte
-        ]
+            "rotate_cw",     # Rotation horaire (Y)
+            "rotate_ccw",    # Rotation anti-horaire (Y)
+            "zoom_in",       # Agrandir (scale up)
+            "zoom_out",      # Rétrécir (scale down)
+            "swipe_left",    # Translation X-
+            "swipe_right",   # Translation X+
+            "swipe_up",      # Translation Y+
+            "swipe_down"     # Translation Y-
+]
+
 
         self.current_gesture_idx = 0
         self.current_gesture = self.gestures[self.current_gesture_idx]
