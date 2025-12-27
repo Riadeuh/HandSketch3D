@@ -2,6 +2,7 @@
 Script simple de visualisation d'un fichier de geste .npy
 Usage: python view_gesture.py chemin/vers/fichier.npy
 """
+#../gesture_dataset/train/zoom_in/zoom_in_xxxx.npy
 
 import cv2
 import numpy as np
@@ -66,7 +67,7 @@ def draw_hand(img, landmarks):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python view_gesture.py <fichier.npy>")
+        print("python view_gesture.py <fichier.npy>")
         print("Exemple: python view_gesture.py gesture_dataset/train/rotate_cw/rotate_cw_0001.npy")
         sys.exit(1)
 
