@@ -183,7 +183,7 @@ class GestureDatasetCapture:
         if self.countdown > 0:
             # Compte à rebours
             countdown_text = str(self.countdown)
-            text_size = cv2.getTextSize(countdown_text, cv2.FONT_HERSHEY_BOLD, 5, 10)[0]
+            text_size = cv2.getTextSize(countdown_text, cv2.FONT_HERSHEY_DUPLEX, 5, 10)[0]
             text_x = (w - text_size[0]) // 2
             text_y = (h + text_size[1]) // 2
             cv2.putText(img, countdown_text, (text_x, text_y),
