@@ -158,7 +158,7 @@ class GestureDatasetCapture:
 
         # Titre
         cv2.putText(img, "CAPTURE DE DATASET - GESTES", (20, 40),
-                   cv2.FONT_HERSHEY_BOLD, 1.0, (255, 255, 255), 2)
+                   cv2.FONT_HERSHEY_DUPLEX, 1.0, (255, 255, 255), 2)
 
         # Geste actuel
         gesture_text = f"Geste: {self.current_gesture.upper().replace('_', ' ')}"
@@ -183,17 +183,17 @@ class GestureDatasetCapture:
         if self.countdown > 0:
             # Compte à rebours
             countdown_text = str(self.countdown)
-            text_size = cv2.getTextSize(countdown_text, cv2.FONT_HERSHEY_BOLD, 5, 10)[0]
+            text_size = cv2.getTextSize(countdown_text, cv2.FONT_HERSHEY_DUPLEX, 5, 10)[0]
             text_x = (w - text_size[0]) // 2
             text_y = (h + text_size[1]) // 2
             cv2.putText(img, countdown_text, (text_x, text_y),
-                       cv2.FONT_HERSHEY_BOLD, 5, (0, 255, 255), 10)
+                       cv2.FONT_HERSHEY_DUPLEX, 5, (0, 255, 255), 10)
 
         elif self.is_recording:
             # Indicateur d'enregistrement
             cv2.circle(img, (w - 50, 50), 20, (0, 0, 255), -1)
             cv2.putText(img, "REC", (w - 90, 60),
-                       cv2.FONT_HERSHEY_BOLD, 0.7, (0, 0, 255), 2)
+                       cv2.FONT_HERSHEY_DUPLEX, 0.7, (0, 0, 255), 2)
 
             # Barre de progression
             progress = len(self.recorded_frames) / self.frames_per_gesture
