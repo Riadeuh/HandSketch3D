@@ -132,8 +132,8 @@ class GestureRecognizer:
                 if len(self.frame_buffer) > self.num_frames:
                     self.frame_buffer.pop(0)
 
-                # Prédire toutes les 5 frames pour optimiser
-                if len(self.frame_buffer) == self.num_frames and len(self.frame_buffer) % 5 == 0:
+                # Prédire chaque frame pour plus de réactivité
+                if len(self.frame_buffer) >= self.num_frames:
                     gesture, conf = self.predict()
                     if gesture:
                         current_gesture = gesture
