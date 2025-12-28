@@ -24,10 +24,8 @@ class GestureDatasetCapture:
             "rotate_ccw",    # Rotation anti-horaire (Y)
             "zoom_in",       # Agrandir (scale up)
             "zoom_out",      # Rétrécir (scale down)
-            "swipe_left",    # Translation X-
-            "swipe_right",   # Translation X+
-            "swipe_up",      # Translation Y+
-            "swipe_down"     # Translation Y-
+            "grab",          # Attraper l'objet pour le déplacer
+            "release",       # Relacher l'objet
 ]
 
 
