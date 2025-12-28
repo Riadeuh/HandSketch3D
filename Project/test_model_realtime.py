@@ -50,6 +50,31 @@ class GestureRecognizer:
             return features.flatten()  # Shape: (63,)
         return None
 
+    def normalize_sequence(self, sequence):
+        """
+        Normalise une séquence de landmarks comme à l'entraînement
+        Args:
+            sequence: np.array de shape (60, 63)
+        Returns:
+            sequence normalisée
+        """
+        # Reshape en (60, 21, 3)
+        landmarks = sequence.reshape(self.num_frames, 21, 3)
+
+        # Centrer par rapport au poignet (landmark 0)
+        wrist = landmarks[:, 0:1, :]  # Shape: (60, 1, 3)
+        landmarks_centered = landmarks - wrist
+
+        # Normaliser par la taille de la paume (distance poignet-majeur)
+        palm_size = np.linalg.norm(landmarks[:, 9, :] - landmarks[:, 0, :], axis=1)  # Shape: (60,)
+        palm_size = palm_size[:, np.newaxis, np.newaxis]  # Shape: (60, 1, 1)
+        palm_size = np.where(palm_size == 0, 1, palm_size)  # Éviter division par zéro
+
+        landmarks_norm = landmarks_centered / palm_size
+
+        # Reshape back en (60, 63)
+        return landmarks_norm.reshape(self.num_frames, -1)
+
     def predict(self):
         """Fait une prédiction si on a assez de frames"""
         if len(self.frame_buffer) < self.num_frames:
@@ -57,6 +82,9 @@ class GestureRecognizer:
 
         # Prendre les 60 dernières frames
         sequence = np.array(self.frame_buffer[-self.num_frames:])  # Shape: (60, 63)
+
+        # IMPORTANT: Normaliser comme à l'entraînement
+        sequence = self.normalize_sequence(sequence)  # Shape: (60, 63)
 
         # Ajouter dimension batch
         sequence = np.expand_dims(sequence, axis=0)  # Shape: (1, 60, 63)
