@@ -13,11 +13,9 @@ class GestureDatasetCapture:
     def __init__(self):
         self.cap = cv2.VideoCapture(0)
         self.detector = handDetector(mode='VIDEO', maxHands=1)
-
         self.fps = 30
         self.record_duration = 2.0  # secondes
         self.frames_per_gesture = int(self.fps * self.record_duration)
-
         self.gestures = [
             "idle",          # Main au repos
             "rotate",        # Rotation
@@ -26,18 +24,13 @@ class GestureDatasetCapture:
             "pour",          # verser
             "move"           # bouger l'objet
 ]
-
-
         self.current_gesture_idx = 0
         self.current_gesture = self.gestures[self.current_gesture_idx]
-
         self.is_recording = False
         self.recorded_frames = []
         self.countdown = 0
         self.countdown_start = 0
-
         self.gesture_counts = {gesture: 0 for gesture in self.gestures}
-
         self.setup_directories()
         self.load_existing_counts()
 
@@ -45,11 +38,9 @@ class GestureDatasetCapture:
         self.base_path = Path("gesture_dataset")
         self.train_path = self.base_path / "train"
         self.val_path = self.base_path / "validation"
-
         for gesture in self.gestures:
             (self.train_path / gesture).mkdir(parents=True, exist_ok=True)
             (self.val_path / gesture).mkdir(parents=True, exist_ok=True)
-
         print(f"Folder created : {self.base_path.absolute()}")
 
     def load_existing_counts(self):
@@ -79,12 +70,10 @@ class GestureDatasetCapture:
 
     def stop_recording(self):
         self.is_recording = False
-
         if len(self.recorded_frames) >= 10: 
             self.save_gesture()
         else:
             print("Short")
-
         self.recorded_frames = []
 
     def record_frame(self, landmarks):
