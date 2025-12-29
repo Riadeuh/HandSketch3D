@@ -1,17 +1,16 @@
 {
   "classes": [
-    "grab",
     "idle",
-    "release",
-    "rotate_ccw",
-    "rotate_cw",
-    "zoom_in",
-    "zoom_out"
+    "rotate",
+    "zoom",
+    "grab",
+    "pour",
+    "move"
   ],
   "input_shape": [
     60,
     63
   ],
-  "val_accuracy": 0.9555555555555556,
-  "total_params": 195463
+  "val_accuracy": 0.9459459459459459,
+  "total_params": 195334
 }
