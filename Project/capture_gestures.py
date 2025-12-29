@@ -20,12 +20,11 @@ class GestureDatasetCapture:
 
         self.gestures = [
             "idle",          # Main au repos
-            "rotate_cw",     # Rotation horaire (Y)
-            "rotate_ccw",    # Rotation anti-horaire (Y)
-            "zoom_in",       # Agrandir (scale up)
-            "zoom_out",      # Rétrécir (scale down)
+            "rotate",        # Rotation
+            "zoom",          # zoom
             "grab",          # Attraper l'objet pour le déplacer
-            "release",       # Relacher l'objet
+            "pour",          # verser
+            "move"           # bouger l'objet
 ]
 
 
