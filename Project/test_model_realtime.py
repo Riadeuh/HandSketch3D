@@ -8,6 +8,7 @@ import numpy as np
 from HandTrackingModule import handDetector
 import json
 from pathlib import Path
+import time
 
 try:
     from tensorflow import keras
@@ -27,7 +28,7 @@ class GestureRecognizer:
 
         self.classes = metadata['classes']
         self.input_shape = metadata['input_shape']  # [60, 63]
-        self.num_frames = self.input_shape[0]  # 60 frames
+        self.num_frames = 20  # 60 frames
 
         # Charger le modèle
         self.model = keras.models.load_model(model_path)
@@ -110,12 +111,19 @@ class GestureRecognizer:
         current_gesture = "Waiting..."
         confidence = 0.0
 
+        pTime = 0
+        cTime = 0
+
         while True:
             success, img = cap.read()
             if not success:
                 break
 
             img = cv2.flip(img, 1)
+
+            cTime = time.time()
+            fps = 1 / (cTime - pTime) if (cTime - pTime) > 0 else 0
+            pTime = cTime
 
             # Détection main
             img = self.detector.findHands(img, draw=True)
@@ -166,6 +174,9 @@ class GestureRecognizer:
             buffer_text = f"Buffer: {len(self.frame_buffer)}/{self.num_frames}"
             cv2.putText(img, buffer_text, (w - 220, 30),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
+            
+            fps_text = f"FPS: {int(fps)}"
+            cv2.putText(img, fps_text, (w - 220, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
 
             # Barre de confiance
             if confidence > 0:
