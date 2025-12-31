@@ -11,6 +11,6 @@
     60,
     63
   ],
-  "val_accuracy": 0.9459459459459459,
+  "val_accuracy": 1.0,
   "total_params": 195334
 }
