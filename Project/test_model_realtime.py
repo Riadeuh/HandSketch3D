@@ -28,7 +28,7 @@ class GestureRecognizer:
 
         self.classes = metadata['classes']
         self.input_shape = metadata['input_shape']  # [60, 63]
-        self.num_frames = 20  # 60 frames
+        self.num_frames = 10  # 60 frames
 
         # Charger le modèle
         self.model = keras.models.load_model(model_path)
