@@ -1,7 +1,7 @@
 # Handsketch3D 
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![MediaPipe](https://img.shields.io/badge/MediaPipe-Hands-green.svg)](https://google.github.io/mediapipe/)
+[![MediaPipe](https://img.shields.io/badge/MediaPipe-Hands-green.svg)]([https://google.github.io/mediapipe/](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker?hl=fr))
 [![Point-E](https://img.shields.io/badge/OpenAI-Point--E-orange.svg)](https://github.com/openai/point-e)
 
 **Handsketch3D** est une application interactive qui transforme les dessins à main levée en modèles 3D. Développé dans le cadre du Master 2 Vision et Machine Intelligence de l'Université de Paris Cité, ce projet rend la modélisation 3D accessible sans expertise technique préalable.
