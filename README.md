@@ -87,7 +87,13 @@ python main_pipeline.py
 
 ### Exemples de génération
 
-![Demo animation](Project/PointE/test_results/lamp/Enregistrement 2026-01-26 221422.mp4)
+https://github.com/user-attachments/assets/07f79cf2-2b85-4d2f-8300-867fc263f36a
+
+01-26 221422.mp4)
+
+https://github.com/user-attachments/assets/8fcd0fa2-5fcd-4d33-adff-d30e215f9f42
+
+
 
 
 ### Limitations connues
